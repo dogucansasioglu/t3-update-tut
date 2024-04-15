@@ -1,5 +1,7 @@
 import { db } from "@/server/db";
 
+export const dynamic = "force-dynamic";
+
 const imagesUrl = [
   "https://utfs.io/f/bb57cad2-c785-4338-91e5-6e7b08d4848d-f51xlm.webp",
   "https://utfs.io/f/61e425df-0f3a-4ad4-825b-e74862cbcefb-1wbh7b.webp",
