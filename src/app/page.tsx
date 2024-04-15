@@ -1,3 +1,5 @@
+import { db } from "@/server/db";
+
 const imagesUrl = [
   "https://utfs.io/f/bb57cad2-c785-4338-91e5-6e7b08d4848d-f51xlm.webp",
   "https://utfs.io/f/61e425df-0f3a-4ad4-825b-e74862cbcefb-1wbh7b.webp",
@@ -10,10 +12,17 @@ const images = imagesUrl.map((url, index) => ({
   src: url,
 }));
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
+
   return (
     <main>
       <div className="flex flex-wrap gap-4">
+        {posts.map((post) => (
+          <div key={post.id} className="h-48 w-48">
+            {post.name}
+          </div>
+        ))}
         {[...images, ...images, ...images].map((image, index) => (
           <img
             key={index}
